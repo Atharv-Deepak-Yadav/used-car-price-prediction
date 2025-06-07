@@ -86,7 +86,8 @@ elif page == "Predict":
     km_driven = st.number_input("Kilometers Driven", min_value=0, value=50000)
     fuel = st.selectbox("Fuel Type", list(fuel_map.keys()))
     trans = st.selectbox("Transmission", list(trans_map.keys()))
-    owner =
+    owner =st.selectbox("Owner Type", list(owner_map.keys()))
+
     engine = st.number_input("Engine (in CC)", min_value=500, max_value=10000, value=1200)
 
     if st.button("Predict Price"):
