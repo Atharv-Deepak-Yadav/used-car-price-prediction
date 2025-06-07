@@ -53,13 +53,7 @@ if page == "Home":
     fuel_counts = df_clean['Fuel_Type'].value_counts()
     st.bar_chart(fuel_counts)
 
-    st.subheader("⬇️ Download Cleaned Dataset")
-    st.download_button(
-        label="Download CSV",
-        data=df_clean.to_csv(index=False),
-        file_name="cleaned_used_car_data.csv",
-        mime="text/csv"
-    )
+    
 
     st.subheader("📌 Model Details")
     st.markdown("""
