@@ -1,5 +1,3 @@
-# app.py
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,7 +10,7 @@ label_encoder = joblib.load("label_encoder_small.pkl")
 # Load dataset (used for "Dataset" page)
 df = pd.read_csv("used_cars_data.csv")
 
-# Clean dataset to show in dataset section
+# Clean dataset
 df_clean = df.dropna().copy()
 df_clean['Engine'] = df_clean['Engine'].astype(str).str.extract('(\d+)').astype(float)
 
@@ -34,7 +32,7 @@ if page == "Home":
     st.title("🚗 Used Car Price Predictor")
     st.markdown("""
     Welcome to the **Used Car Price Predictor** app!  
-    This app uses machine learning to estimate the resale price of used cars based on input features like:
+    This app uses machine learning to estimate the resale price of used cars based on:
     
     - Car model
     - Year of manufacture
@@ -44,34 +42,33 @@ if page == "Home":
     - Ownership history
     - Engine capacity
     
-    Use the sidebar to:
-    - 🔍 View the dataset used
-    - 📈 Predict car prices interactively
+    👉 Use the sidebar to explore the dataset or predict prices.
     """)
 
     st.subheader("📊 Quick Dataset Insights")
     col1, col2, col3 = st.columns(3)
     col1.metric("Average Engine (CC)", f"{df_clean['Engine'].mean():.0f}")
     col2.metric("Most Common Fuel", df_clean['Fuel_Type'].mode()[0])
-    col3.metric("Average Kilometers Driven", f"{df_clean['Kms_Driven'].mean():.0f}")
+    col3.metric("Average KM Driven", f"{df_clean['Kms_Driven'].mean():.0f}")
 
-    st.subheader("📉 Sample Visualizations")
+    st.subheader("📉 Fuel Type Distribution")
     fuel_counts = df_clean['Fuel_Type'].value_counts()
     st.bar_chart(fuel_counts)
 
-    st.subheader("⬇️ Download Dataset")
+    st.subheader("⬇️ Download Cleaned Dataset")
     st.download_button(
-        label="Download Cleaned CSV",
+        label="Download CSV",
         data=df_clean.to_csv(index=False),
-        file_name='cleaned_used_car_data.csv',
-        mime='text/csv'
+        file_name="cleaned_used_car_data.csv",
+        mime="text/csv"
     )
 
-    st.subheader("📌 Model Information")
+    st.subheader("📌 Model Details")
     st.markdown("""
-    - Model Used: **Random Forest Regressor** (example)
-    - Accuracy: ~**85%** on test data
-    - Features: Encoded categorical + numerical inputs
+    - **Model Used**: Random Forest Regressor *(example, may vary)*
+    - **Input Features**: Encoded categorical + numerical
+    - **Typical Accuracy**: ~85% (on test set)
+    - **Training Data**: Real-world used car records
     """)
 
 # ------------------- PAGE: DATASET ------------------- #
