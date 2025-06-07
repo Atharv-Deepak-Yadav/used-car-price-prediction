@@ -42,7 +42,7 @@ model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Save the trained model and label encoder
-joblib.dump(model, "car_price_model.pkl")
-joblib.dump(label_encoder, "label_encoder.pkl")
+joblib.dump(model, "car_price_model_small.pkl")
+joblib.dump(label_encoder, "label_encoder_small.pkl")
 
 print("✅ Model trained and saved as car_price_model.pkl and label_encoder.pkl")
