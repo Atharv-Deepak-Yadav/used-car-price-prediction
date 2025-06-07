@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 
 # Load saved model and label encoder
-model = joblib.load("car_price_model.pkl")
+model = joblib.load("car_price_model.Z")
 label_encoder = joblib.load("label_encoder.pkl")
 
 # Maps (same as training)
