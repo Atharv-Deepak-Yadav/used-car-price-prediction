@@ -4,8 +4,8 @@ import joblib
 import numpy as np
 
 # Load saved model and label encoder
-model = joblib.load("car_price_model.pkl")
-label_encoder = joblib.load("label_encoder.pkl")
+model = joblib.load("car_price_model_small.pkl")
+label_encoder = joblib.load("label_encoder_small.pkl")
 
 # Maps (same as training)
 fuel_map = {"Petrol": 0, "Diesel": 1, "CNG": 2, "Electric": 3, "LPG": 4, "Hybrid": 5}
