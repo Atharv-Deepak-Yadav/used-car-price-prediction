@@ -43,11 +43,6 @@ if page == "Home":
         👉 Use the sidebar to explore the dataset or predict prices.
     """)
 
-    st.subheader("📊 Quick Dataset Insights")
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Average Engine (CC)", f"{df_clean['Engine'].mean():.0f}")
-    col2.metric("Most Common Fuel", df_clean['Fuel_Type'].mode()[0])
-    col3.metric("Average KM Driven", f"{df_clean.get('Kms_Driven',pd.Series([np.nan])).mean():.0f}")
 
     st.subheader("📉 Fuel Type Distribution")
     fuel_counts = df_clean['Fuel_Type'].value_counts()
